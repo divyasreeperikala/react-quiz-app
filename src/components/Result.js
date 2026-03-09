@@ -11,9 +11,15 @@ function Result() {
   return (
     <div className="result">
 
-      <h2>Your Score</h2>
+      <h2>Quiz Completed 🎉</h2>
 
-      <h3>{score}</h3>
+      <h3>Your Score: {score}</h3>
+
+      <p>
+        {score >= 5 ? "Excellent Work 🚀" :
+        score >= 3 ? "Good Job 👍" :
+        "Keep Practicing 💡"}
+      </p>
 
       <button onClick={() => navigate("/")}>
         Play Again

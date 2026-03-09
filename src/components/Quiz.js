@@ -11,8 +11,11 @@ function Quiz() {
 
   const handleAnswer = (option) => {
 
+    let newScore = score;
+
     if (option === questions[currentQuestion].answer) {
-      setScore(score + 1);
+      newScore = score + 1;
+      setScore(newScore);
     }
 
     const next = currentQuestion + 1;
@@ -20,13 +23,17 @@ function Quiz() {
     if (next < questions.length) {
       setCurrentQuestion(next);
     } else {
-      navigate("/result", { state: { score } });
+      navigate("/result", { state: { score: newScore } });
     }
 
   };
 
   return (
     <div className="quiz">
+
+      <div className="progress">
+        Question {currentQuestion + 1} / {questions.length}
+      </div>
 
       <h2>{questions[currentQuestion].question}</h2>
 
